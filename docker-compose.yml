@@ -4,6 +4,6 @@ front:
     build: repos/front
     command: bash
     volumes:
-        - .:/front
+        - ./repos/front:/opt/tlks.io/front
     links:
         - mongodb
