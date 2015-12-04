@@ -1,0 +1,9 @@
+mongodb:
+    image: mongo:latest
+front:
+    build: front
+    command: bash
+    volumes:
+        - .:/front
+    links:
+        - mongodb
