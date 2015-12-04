@@ -1,7 +1,7 @@
 mongodb:
     image: mongo:latest
 front:
-    build: front
+    build: repos/front
     command: bash
     volumes:
         - .:/front
