@@ -1,9 +1,8 @@
-build: clean pull
+build: clean
 	docker-compose build
 
-pull:
-	mkdir -p repos
-	git clone git@github.com:tlksio/front.git repos/front
+up:
+	docker-compose up
 
 clean:
-	rm -rf repos
+	docker-compose rm -f front

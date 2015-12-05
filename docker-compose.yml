@@ -1,9 +1,7 @@
-mongodb:
-    image: mongo:latest
 front:
-    build: repos/front
-    command: bash
+    build: ../front
     volumes:
-        - ./repos/front:/opt/tlks.io/front
-    links:
-        - mongodb
+        - ../front:/opt/tlks.io/front
+        - ../.contrib:/opt/tlks.io/.contrib:ro
+    ports:
+        - 9001:9001
