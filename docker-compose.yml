@@ -1,5 +1,10 @@
+nginx:
+    build: ./nginx
+    ports:
+        - 80:80
 front:
     build: ../front
+    command: nodemon index.js
     volumes:
         - ../front:/opt/tlks.io/front
         - ../.contrib:/opt/tlks.io/.contrib:ro
