@@ -1,8 +1,7 @@
 build: clean
-	docker-compose build
+	docker-compose build --force-rm --pull
 
 up:
 	docker-compose up
 
 clean:
-	docker-compose rm -f front
