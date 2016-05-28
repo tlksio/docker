@@ -1,0 +1,20 @@
+version: '2'
+services:
+    db:
+        build: ./mongo
+        container_name: db
+        volumes:
+            - ./mongo/data:/data/db
+    web:
+        build: ../front
+        container_name: front
+        volumes:
+            - ../front:/opt/tlks.io/front
+            - ./node_modules:/opt/tlks.io/front/node_modules
+            - ../front/config.json:/opt/tlks.io/front/config.json
+            - ../front/bower.json:/opt/tlks.io/front/bower.json
+        command: node index.js
+        ports:
+            - "9001:9001"
+        depends_on:
+            - db

@@ -4,4 +4,7 @@ build: clean
 up:
 	docker-compose up
 
+start:
+	docker-compose up -d
+
 clean:
