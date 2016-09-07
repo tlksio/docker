@@ -14,8 +14,6 @@ services:
         command: npm start
         links:
             - db:db
-        ports:
-            - "9001:9001"
         depends_on:
             - db
     nginx:
