@@ -1,20 +1,29 @@
 version: '2'
 services:
     db:
-        build: ./mongo
+        image: mongo:latest
         container_name: db
         volumes:
-            - ./mongo/data:/data/db
-    web:
+            - ../mongo/data:/data/db
+    front:
         build: ../front
         container_name: front
         volumes:
             - ../front:/opt/tlks.io/front
-            - ./node_modules:/opt/tlks.io/front/node_modules
             - ../front/config.json:/opt/tlks.io/front/config.json
-            - ../front/bower.json:/opt/tlks.io/front/bower.json
-        command: node index.js
+        command: npm start
+        links:
+            - db:db
         ports:
             - "9001:9001"
         depends_on:
             - db
+    nginx:
+        image: nginx:latest
+        container_name: nginx
+        volumes:
+            - ../nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - front:front
+        ports:
+            - "80:80"
