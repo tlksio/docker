@@ -1,4 +1,4 @@
-build: clean
+build:
 	docker-compose build --force-rm --pull
 
 up:
