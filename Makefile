@@ -6,5 +6,3 @@ up:
 
 start:
 	docker-compose up -d
-
-clean:
